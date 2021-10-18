@@ -1,0 +1,11 @@
+functionalite avoirLeMax ( numero a, numero b, numero c ) {
+	numero leMax
+	si a >ou= b et a>ou= c {
+		leMax devient a
+	}
+	ousi b >ou= a et b >ou= c {
+		leMax devient b
+	}
+	sino{ leMax devient c }
+	donne leMax
+}
