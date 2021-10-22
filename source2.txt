@@ -1,0 +1,15 @@
+functionalite avoirLeGCD ( numero a, numero b ) {
+si a est 0 {
+donne b
+}
+si b est = {
+donne a
+}
+si a est b {
+donne a
+}
+si a > b {
+donne avoirLeGCD ( a - b , b )
+}
+donne avoirLeGCD ( a , b - a )
+}

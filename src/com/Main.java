@@ -3,8 +3,10 @@ package com;
 public class Main {
 
     public static void main(String[] args) {
-        MyScanner sc = new MyScanner();
-
-        sc.scanning();
+        MyScanner scanner = new MyScanner();
+        scanner.detect("sourceError.txt");
+        scanner.writePifToFile();
+        scanner.writeStToFile();
+        //System.out.println(scanner);
     }
 }
