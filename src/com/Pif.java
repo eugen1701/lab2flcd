@@ -28,9 +28,9 @@ public class Pif {
     /**
      * This function ads to the Programme Internal Form a new tuple as described
      * in the doc of the class
-     * @param token -Type: String - the token for which the PIF is generated
-     * @param indexIn - The position in the Symbol Table (Hash Value)
-     * @param indexST - The position in the Array of the Symbol Table
+     * @param token Type: String - the token for which the PIF is generated
+     * @param indexIn  The position in the Symbol Table (Hash Value)
+     * @param indexST  The position in the Array of the Symbol Table
      * */
     public void genPIF(String token, int indexIn, int indexST){
         ArrayList<String> spot = new ArrayList<>();

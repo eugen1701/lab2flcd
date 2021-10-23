@@ -46,8 +46,8 @@ public class MyScanner {
     }
 
     /**
-     * Detect function do the tokenization of the source code and classify each
-     * token whether is a reserved word / operator or if it is an identifier it ads
+     * Detect function does the tokenization of the source code and classify each
+     * token whether is a reserved word / operator or if it is an identifier it adds
      * it to the system table. After this the PIF is generated with the new token.
      * If a token cannot be classified the Lexical Error is thrown.
      * @param filePath The file path to the source code.
