@@ -8,18 +8,30 @@ import java.util.ArrayList;
 /**
  * Programme Internal Form will be an array and each spot will be another array with 4 spots:
  * 1. Index
- * 2.
+ * 2. Token
+ * 3. Hash Value of the Token
+ * 4. The index in the list of the Hash Table which represent the Symbol Table
  * */
 public class Pif {
 
     private ArrayList<ArrayList> pif;
     private Integer index;
 
+    /**
+     * Programme Internal Form is made and the its index starts from 0
+     * */
     public Pif(){
         this.pif = new ArrayList<>();
         this.index = 0;
     }
 
+    /**
+     * This function ads to the Programme Internal Form a new tuple as described
+     * in the doc of the class
+     * @param token -Type: String - the token for which the PIF is generated
+     * @param indexIn - The position in the Symbol Table (Hash Value)
+     * @param indexST - The position in the Array of the Symbol Table
+     * */
     public void genPIF(String token, int indexIn, int indexST){
         ArrayList<String> spot = new ArrayList<>();
         spot.add(index.toString());
@@ -42,6 +54,9 @@ public class Pif {
         return toDisplay;
     }
 
+    /**
+     * This function write a representation of the PIF to a file
+     * */
     public void writeToFile() {
         File myObj = new File("pif.txt");
         try {

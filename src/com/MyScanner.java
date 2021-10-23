@@ -2,12 +2,15 @@ package com;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * MyScanner class represents the scanner which detect the tokens in a source
+ * it uses a StringTokenizer in order to do the tokenization
+ * */
 public class MyScanner {
 
     private SymbolTable st;
@@ -16,6 +19,11 @@ public class MyScanner {
     private ArrayList<String> reservedWords;
     private Pif pif;
 
+    /**
+     * MyScanner class is created. It sets the  size of the Symbol Table.
+     * It loads internally from the "Token.in" file
+     * the reserved words and operators. It also sets its delimiters (del).
+     * */
     public MyScanner() {
         this.st = new SymbolTable(17);
         this.pif = new Pif();
@@ -37,6 +45,13 @@ public class MyScanner {
         this.del = ", ";
     }
 
+    /**
+     * Detect function do the tokenization of the source code and classify each
+     * token whether is a reserved word / operator or if it is an identifier it ads
+     * it to the system table. After this the PIF is generated with the new token.
+     * If a token cannot be classified the Lexical Error is thrown.
+     * @param filePath The file path to the source code.
+     * */
     public void detect(String filePath) {
         ArrayList<String> lines = new ArrayList<>();
         try {
@@ -65,7 +80,7 @@ public class MyScanner {
                    this.tokens.add(token);
                    if(reservedWords.contains(token))
                        pif.genPIF(token, 0, 0);
-                   else if(isIdentifierOrConstand(token)){
+                   else if(isIdentifierOrConstant(token)){
                        ArrayList<Integer> indexes = st.pos(token);
                        pif.genPIF(token, indexes.get(0), indexes.get(1));
                    }
@@ -84,7 +99,14 @@ public class MyScanner {
 
     }
 
-    public boolean isIdentifierOrConstand(String token) {
+    /**
+     * This function establish whether a token is an identifier or a constant using
+     * regex. The used regex means that the token should start by a lower case letter
+     * and after it can continue with lower or upper case letter or numbers and it can
+     * has maximum 7 characters.
+     * @param token Is the token to be test if it is an identifier or not
+     * */
+    public boolean isIdentifierOrConstant(String token) {
         Pattern pattern = Pattern.compile("^[a-z]([a-zA-Z]|[0-9]){0,7}");
         Matcher matcher = pattern.matcher(token);
         if(matcher.find()){
@@ -114,10 +136,16 @@ public class MyScanner {
                 '}';
     }
 
+    /**
+     * This method calls the "writeToFile" method of PIF
+     * */
     public void writePifToFile() {
         this.pif.writeToFile();
     }
 
+    /**
+     * This method calls the "writeToFile" method of Symbol Table
+     * */
     public void writeStToFile() {
         this.st.writeToFile();
     }
