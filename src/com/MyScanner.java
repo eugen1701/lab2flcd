@@ -80,7 +80,7 @@ public class MyScanner {
                    this.tokens.add(token);
                    if(reservedWords.contains(token))
                        pif.genPIF(token, 0, 0);
-                   else if(isIdentifierOrConstant(token)){
+                   else if(isIdentifier(token) || isConstant(token) || isCharConstant(token)){
                        ArrayList<Integer> indexes = st.pos(token);
                        pif.genPIF(token, indexes.get(0), indexes.get(1));
                    }
@@ -106,8 +106,32 @@ public class MyScanner {
      * has maximum 7 characters.
      * @param token Is the token to be test if it is an identifier or not
      * */
-    public boolean isIdentifierOrConstant(String token) {
+    public boolean isIdentifier(String token) {
         Pattern pattern = Pattern.compile("^[a-z]([a-zA-Z]|[0-9]){0,7}");
+        Matcher matcher = pattern.matcher(token);
+        if(matcher.find()){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * This function verify if an token is a constant or not using regex.
+     * The regex verify that there is plus(+) or minus(-) maximum 1 time followed by
+     * digits, an number can be formed of maximum 8 digits
+     * @param token Type: String. token to be verified to see if it is an constant or not
+     * */
+    public boolean isConstant(String token) {
+        Pattern pattern = Pattern.compile("[-+]?[1-9][0-9]{0,7}");
+        Matcher matcher = pattern.matcher(token);
+        if(matcher.find()){
+            return true;
+        }
+        return false;
+    }
+    //
+    public boolean isCharConstant(String token) {
+        Pattern pattern = Pattern.compile("\"([a-z]|[0-9]){1,50}\"");
         Matcher matcher = pattern.matcher(token);
         if(matcher.find()){
             return true;

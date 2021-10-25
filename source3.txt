@@ -1,4 +1,4 @@
-functionalite avoirLeMaxDuPlusier ( numero nums [] , numero capacite) {
+functionalite avoirLeMaxDuPlusier ( numero nums [ ] , numero capacite) {
 numero leMax devient nums [ 0 ]
 pour i = 1 , i < capacite , i est i + 1 {
 si leMax < nums [ i ] {
